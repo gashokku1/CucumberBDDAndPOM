@@ -1,6 +1,6 @@
 Feature: Conduit CRUD Functions
 
-Background: Login into App
+Scenario: Login into App
 
 Given User is on Login page
 When User  provide "TestUserBot@testmail.com" and "TestUserBot"
@@ -15,10 +15,9 @@ When User  enters Article details
 | TestArticleDemo | New Description | TestContent | TestTag |
 Then Article must be created
 
-
 Scenario: View Article
 Given User should be on Global Feed Page
-When User select an article "Article title"
+When User select an article "TestArticleDemo"
 Then Article details must be displayed
 
 Scenario: Update an Article

@@ -11,6 +11,10 @@ public class ApplicationHomepage {
 	
 	@FindBy(xpath="//*[text()='New Article']")
 	WebElement newArticleTab;
+	@FindBy(xpath="//*[text()='Home']")
+	WebElement homepagebtn;
+	@FindBy(xpath="//*[text()='Global Feed']")
+	WebElement globalFeedBtn;
 	/*
 	 * @FindBy(id="add-to-cart-sauce-labs-bike-light") WebElement itemTwo;
 	 * 
@@ -33,6 +37,13 @@ public class ApplicationHomepage {
 	
 	public void navigateToArticle() {
 		newArticleTab.click();
+	}
+	
+	public void navigateToHomePage() {
+		homepagebtn.click();
+	}
+	public void navigateToGlobalFeed() {
+		globalFeedBtn.click();
 	}
 	
 	/*

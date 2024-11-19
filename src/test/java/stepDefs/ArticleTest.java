@@ -31,6 +31,7 @@ import pages.CreatedArticlePage;
 import pages.DeleteArticlePage;
 import pages.EditArticlePage;
 import pages.LoginPage;
+import pages.ViewArticlePage;
 
 
 public class ArticleTest {
@@ -41,6 +42,7 @@ public class ArticleTest {
 	CreatedArticlePage createdArticlePage;
 	EditArticlePage editArticlePage;
 	DeleteArticlePage deleteArticlePage;
+	ViewArticlePage viewArticlePage;
 //	CheckoutPage checkoutPage;
 	public ArticleTest() {
 		
@@ -51,6 +53,7 @@ public class ArticleTest {
 		articlePage = new ArticlePage(driver);
 		createdArticlePage = new CreatedArticlePage(driver);
 		editArticlePage = new EditArticlePage(driver);
+		viewArticlePage = new ViewArticlePage(driver);
 	}
 	
 	/*
@@ -108,23 +111,25 @@ public class ArticleTest {
 	
 	@Given("User should be on Global Feed Page")
 	public void user_should_be_on_global_feed_page() {
+		viewArticlePage.navigateToHomePage();
+		viewArticlePage.navigateToGlobalFeed();
 		createdArticlePage.validateCreatedArticle();
 	}
 	@When("User select an article {string}")
-	public void user_select_an_article(String string) {
+	public void user_select_an_article(String title) {
 	   
-	   
+		viewArticlePage.viewArticle(title);
 	}
 	@Then("Article details must be displayed")
 	public void article_details_must_be_displayed() {
 	    // Write code here that turns the phrase above into concrete actions
-	    
+		viewArticlePage.validateArticle();
 	}
 	
 
 	@Given("Artilce detail page must be displayed")
 	public void artilce_detail_page_must_be_displayed() {
-	    
+		viewArticlePage.validateArticle();
 	}
 	@When("User update article detail")
 	public void user_update_article_detail(String title) {
@@ -142,7 +147,7 @@ public class ArticleTest {
 	
 	@Given("Article detail page must be displayed")
 	public void article_detail_page_must_be_displayed() {
-	   
+		createdArticlePage.validateCreatedArticle();
 	}
 	@When("User delete article")
 	public void user_delete_article() {
