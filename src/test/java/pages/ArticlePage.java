@@ -24,8 +24,8 @@ public class ArticlePage {
 	WebElement content;
 	@FindBy(css = "fieldset> [name=tags]")
 	WebElement tags;
-	@FindBy(css = "[type=submit]")
-	WebElement submit;
+	@FindBy(xpath = "//*[text()='Publish Article']")
+	WebElement publishBtn;
 	
 	public ArticlePage(WebDriver driver){
 		PageFactory.initElements(driver, this);
@@ -55,11 +55,13 @@ public class ArticlePage {
 		//JavascriptExecutor
 		this.tags.sendKeys(tags);
 	}
-	public void publishArticle() {
+	public void publishArticle() throws InterruptedException {
 		//Actions act = new Actions(TestBase.getDriver());
 		//act.moveToElement(submit);
 		//JavascriptExecutor
-		submit.click();
+		publishBtn.click();
+		Thread.sleep(3000);
+		
 	}
 	
 

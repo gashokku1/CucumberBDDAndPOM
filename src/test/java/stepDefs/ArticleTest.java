@@ -54,6 +54,7 @@ public class ArticleTest {
 		createdArticlePage = new CreatedArticlePage(driver);
 		editArticlePage = new EditArticlePage(driver);
 		viewArticlePage = new ViewArticlePage(driver);
+		deleteArticlePage = new DeleteArticlePage(driver);
 	}
 	
 	/*
@@ -104,15 +105,16 @@ public class ArticleTest {
 	   
 	}
 	@Then("Article must be created")
-	public void article_must_be_created() {
+	public void article_must_be_created() throws InterruptedException {
 		articlePage.publishArticle();
 	}
 
 	
 	@Given("User should be on Global Feed Page")
-	public void user_should_be_on_global_feed_page() {
+	public void user_should_be_on_global_feed_page() throws InterruptedException {
 		viewArticlePage.navigateToHomePage();
 		viewArticlePage.navigateToGlobalFeed();
+		Thread.sleep(2000);
 		createdArticlePage.validateCreatedArticle();
 	}
 	@When("User select an article {string}")
@@ -131,7 +133,7 @@ public class ArticleTest {
 	public void artilce_detail_page_must_be_displayed() {
 		viewArticlePage.validateArticle();
 	}
-	@When("User update article detail")
+	@When("User update article detail {string}")
 	public void user_update_article_detail(String title) {
 		//Assert.assertTrue(editArticlePage.validateEditArticle());
 		editArticlePage.navigateToEditArticle();
@@ -156,7 +158,7 @@ public class ArticleTest {
 	}
 	@Then("Article must be deleted")
 	public void article_must_be_deleted() {
-	   
+	   System.out.println("Article is deleted");
 	}
 
 

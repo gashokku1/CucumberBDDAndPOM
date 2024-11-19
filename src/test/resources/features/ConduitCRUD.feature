@@ -12,17 +12,17 @@ Scenario: Create a new Article
 Given User should be on New Article Page
 When User  enters Article details
 | title | Desc | Content | tag |
-| TestArticleDemo | New Description | TestContent | TestTag |
+| TestArticleDemo2 | New Description | TestContent | TestTag |
 Then Article must be created
 
 Scenario: View Article
 Given User should be on Global Feed Page
-When User select an article "TestArticleDemo"
+When User select an article "TestArticleDemo2"
 Then Article details must be displayed
 
 Scenario: Update an Article
 Given Artilce detail page must be displayed
-When User update article detail
+When User update article detail "TestArticleDemoUpdated"
 Then Article detail must be updated
 
 Scenario: Delete an Article
