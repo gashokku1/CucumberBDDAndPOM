@@ -1,5 +1,7 @@
 package stepDefs;
 
+
+import org.testng.AssertJUnit;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +17,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.util.Assert;
+
 
 import base.TestBase;
 import io.cucumber.datatable.DataTable;
@@ -89,7 +92,7 @@ public class ArticleTest {
 	}
 	@Given("User should be on New Article Page")
 	public void user_should_be_on_new_article_page() {
-	    articlePage.validateArticlePage();
+		AssertJUnit.assertTrue(articlePage.validateArticlePage());
 	}
 	@When("User  enters Article details")
 	public void user_enters_article_details(DataTable dataTable) {
@@ -115,7 +118,7 @@ public class ArticleTest {
 		viewArticlePage.navigateToHomePage();
 		viewArticlePage.navigateToGlobalFeed();
 		Thread.sleep(2000);
-		createdArticlePage.validateCreatedArticle();
+		AssertJUnit.assertTrue(createdArticlePage.validateCreatedArticle());
 	}
 	@When("User select an article {string}")
 	public void user_select_an_article(String title) {
@@ -125,13 +128,14 @@ public class ArticleTest {
 	@Then("Article details must be displayed")
 	public void article_details_must_be_displayed() {
 	    // Write code here that turns the phrase above into concrete actions
-		viewArticlePage.validateArticle();
+		AssertJUnit.assertTrue(viewArticlePage.validateArticle());
+		//Assert.assertTrue(validateArticle());
 	}
 	
 
 	@Given("Artilce detail page must be displayed")
 	public void artilce_detail_page_must_be_displayed() {
-		viewArticlePage.validateArticle();
+		AssertJUnit.assertTrue(viewArticlePage.validateArticle());
 	}
 	@When("User update article detail {string}")
 	public void user_update_article_detail(String title) {
@@ -143,13 +147,13 @@ public class ArticleTest {
 	}
 	@Then("Article detail must be updated")
 	public void article_detail_must_be_updated() {
-		createdArticlePage.validateCreatedArticle();
+		AssertJUnit.assertTrue(createdArticlePage.validateCreatedArticle());
 	}
 	
 	
 	@Given("Article detail page must be displayed")
 	public void article_detail_page_must_be_displayed() {
-		createdArticlePage.validateCreatedArticle();
+		AssertJUnit.assertTrue(createdArticlePage.validateCreatedArticle());
 	}
 	@When("User delete article")
 	public void user_delete_article() {
